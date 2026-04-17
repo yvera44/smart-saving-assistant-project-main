@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PayPal Smart Savings Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>PayPal Savings Assistant</h1>
+    </header>
+
+    <section class="tabs">
+        <button class="tab-button active" data-tab="dashboard-tab">Dashboard</button>
+        <button class="tab-button" data-tab="goal-tab">Goal</button>
+    </section>
+
+    <section id="dashboard-tab" class="tab-content active">
+        <div class="status-cards">
+            <div class="cards">
+                <div class="card">
+                    <h3>Balance</h3>
+                    <p id="balance">$0.00</p>
+                </div>
+                <div class="card">
+                    <h3>Saved</h3>
+                    <p id="saved">$0.00</p>
+                </div>
+                <div class="card">
+                    <h3>Goal progress</h3>
+                    <p id="goal-progress">0%</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-goals-panel">
+            <h2>Active Goals</h2>
+            <div id="dashboard-goal-list" class="dashboard-goal-list"></div>
+        </div>
+
+        <div class="main-row">
+            <div class="transactions">
+                <h2>Recent Transactions</h2>
+                <ul id="transaction-list"></ul>
+            </div>
+            <div class="insights">
+                <h2>Spending Insights</h2>
+                <ul id="insight-list"></ul>
+            </div>
+        </div>
+
+        <div class="ai-tips">
+            <h2>AI Tips</h2>
+            <p id="ai-advice">Loading...</p>
+        </div>
+    </section>
+
+    <section id="goal-tab" class="tab-content">
+        <div class="goal-panel">
+            <h2>Savings Goals</h2>
+            <p class="goal-intro">Create, update, and track multiple goals directly in the app.</p>
+
+            <div class="goal-manager">
+                <div class="goal-list" id="goal-list"></div>
+
+                <div class="goal-form">
+                    <h3>Add a new goal</h3>
+                    <label>
+                        Goal name
+                        <input id="new-goal-name" type="text" placeholder="Vacation" />
+                    </label>
+                    <label>
+                        Target amount
+                        <input id="new-goal-target" type="number" min="0" value="2000" />
+                    </label>
+                    <label>
+                        Saved amount
+                        <input id="new-goal-saved" type="number" min="0" value="0" />
+                    </label>
+                    <button id="add-goal-button" type="button">Add goal</button>
+                </div>
+            </div>
+
+            <div class="goal-summary">
+                <div class="goal-grid">
+                    <div class="goal-card">
+                        <h3>Total target</h3>
+                        <p id="goal-amount">$0.00</p>
+                    </div>
+                    <div class="goal-card">
+                        <h3>Total saved</h3>
+                        <p id="goal-saved">$0.00</p>
+                    </div>
+                    <div class="goal-card">
+                        <h3>Total remaining</h3>
+                        <p id="goal-remaining">$0.00</p>
+                    </div>
+                </div>
+                <div class="goal-status">
+                    <p id="goal-status">Loading goal details...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
