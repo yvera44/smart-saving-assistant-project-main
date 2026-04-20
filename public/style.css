@@ -15,14 +15,36 @@ header {
     margin-bottom: 24px;
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px; 
+}
+
+.nav-logo {
+  height: 30px; 
+  width: auto;   
+}
+
 header h1 {
     margin: 0 0 8px;
+    margin-top: 5px;
 }
 
 .tabs {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
+}
+
+[data-tab="settings-tab"] {
+    margin-left: auto;
+}
+[data-tab="settings-tab"] svg {
+  transition: transform 0.4s ease-in-out;
+}
+[data-tab="settings-tab"]:hover svg {
+    transform: rotate(90deg);
 }
 
 .tab-button {

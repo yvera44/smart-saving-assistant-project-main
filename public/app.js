@@ -16,6 +16,7 @@ const newGoalSavedInput = document.getElementById('new-goal-saved');
 const addGoalButton = document.getElementById('add-goal-button');
 const tabButtons = document.querySelectorAll('.tab-button');
 const tabContents = document.querySelectorAll('.tab-content');
+const toggle = document.querySelector('.theme-toggle');
 
 const currentBalance = 1280.50;
 const storageKey = 'paypalSavingsGoals';
@@ -279,3 +280,10 @@ tabButtons.forEach(button => {
 renderGoals();
 renderDashboardGoals();
 updateSummaryCards();
+
+toggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', targetTheme)
+    localStorage.setItem('theme', targetTheme);
+});
