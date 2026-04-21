@@ -281,9 +281,17 @@ renderGoals();
 renderDashboardGoals();
 updateSummaryCards();
 
-toggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', targetTheme)
-    localStorage.setItem('theme', targetTheme);
+const themeToggle = document.getElementById('theme-toggle');
+const root = document.documentElement;
+
+// Initialize theme from storage
+const currentTheme = localStorage.getItem('theme') || 'light';
+root.setAttribute('data-theme', currentTheme);
+
+themeToggle.addEventListener('click', () => {
+    const activeTheme = root.getAttribute('data-theme');
+    const newTheme = activeTheme === 'light' ? 'dark' : 'light';
+    
+    root.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
 });
