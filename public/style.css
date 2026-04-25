@@ -13,14 +13,14 @@
 
 /* Dark Mode Overrides */
 [data-theme="dark"] {
-    --bg-page: #0a0e14;
-    --bg-card: #161b22;
+    --bg-page: #1c232d;
+    --bg-card: #2c3746;
     --bg-header: #73c2fb;
     --text-main: #f0f6fc;
     --text-secondary: #b0b4b8;
     --accent-color: #58a6ff;
-    --border-color: #252b31;
-    --bg-accent: #0e171f;
+    --border-color: #1f262d;
+    --bg-accent: #1419239b;
     --shadow: rgba(0, 0, 0, 0.4);
 }
 
@@ -389,4 +389,20 @@ header h1 {
     font-size: 0.95rem;
     color: var(--accent-color);
     font-weight: 600;
+}
+
+.theme-button {
+    border: none;
+    background: var(--bg-card);
+    color: var(--accent-color);
+    padding: 12px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px var(--shadow);
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.theme-button.active {
+    background: var(--bg-header);
+    color: var(--bg-card);
 }

@@ -294,4 +294,7 @@ themeToggle.addEventListener('click', () => {
     
     root.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+
+    themeToggle.textContent = newTheme === 'light' ? 'Toggle Dark Mode' : 'Toggle Light Mode';
 });
+
