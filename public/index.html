@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PayPal Smart Savings Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="login-screen" style="position:fixed;inset:0;background:var(--bg-page);display:flex;align-items:center;justify-content:center;z-index:9999;">
+  <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:2rem 2.5rem;width:320px;box-shadow:0 4px 24px var(--shadow);">
+    <h2 style="margin:0 0 1.5rem;font-size:1.2rem;">Sign in to Savings Assistant</h2>
+    <label style="display:block;margin-bottom:1rem;">
+      <span style="font-size:0.9rem;color:var(--text-secondary)">Username</span>
+      <input id="login-username" type="text" placeholder="Enter username" style="display:block;width:100%;margin-top:6px;padding:10px 12px;border:1px solid var(--border-color);border-radius:10px;font-size:1rem;box-sizing:border-box;background:var(--bg-card);color:var(--text-main);" />
+    </label>
+    <label style="display:block;margin-bottom:1.5rem;">
+      <span style="font-size:0.9rem;color:var(--text-secondary)">Password</span>
+      <input id="login-password" type="password" placeholder="Enter password" style="display:block;width:100%;margin-top:6px;padding:10px 12px;border:1px solid var(--border-color);border-radius:10px;font-size:1rem;box-sizing:border-box;background:var(--bg-card);color:var(--text-main);" />
+    </label>
+    <p id="login-error" style="display:none;color:#cc0000;font-size:0.875rem;margin:0 0 1rem;">Incorrect username or password.</p>
+    <button id="login-button" style="width:100%;background:#003087;color:#fff;border:none;padding:12px;border-radius:10px;font-size:1rem;cursor:pointer;">Sign in</button>
+  </div>
+</div>
+
+<header>
+  <div class="logo-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="nav-logo">
+	<path fill="currentColor" d="M8.882 19.94a1 1 0 0 1-.988.843H4.062a1.533 1.533 0 0 1-1.515-1.785l2.59-16.406A1.89 1.89 0 0 1 7 1h6.214c2.56 0 4.408.62 5.492 1.843a4.96 4.96 0 0 1 1.08 4.395c-.021.135-.043.27-.075.418c-.823 4.218-3.655 6.457-8.186 6.457H9.807zm-4.36-.628l-.001.006zM7.113 2.897v.002z" opacity="0.5" />
+	<path fill="currentColor" d="M20.437 7.104a4 4 0 0 0-.545-.508a5 5 0 0 1-.106.642c-.021.135-.043.27-.075.418c-.823 4.218-3.655 6.457-8.186 6.457H9.807l-.925 5.827a1 1 0 0 1-.988.843H6.727l-.082.52A1.467 1.467 0 0 0 8.093 23h3.234a1.76 1.76 0 0 0 1.751-1.469l.64-4.031l.012-.055h.298c4.033 0 6.551-1.993 7.286-5.762a5.15 5.15 0 0 0-.877-4.578" />
+    </svg>
+    <h1>Savings Assistant</h1>
+  </div>
+</header>
+    
+
+    <section class="tabs">
+        <button class="tab-button active" data-tab="dashboard-tab">Dashboard</button>
+        <button class="tab-button" data-tab="goal-tab">Goals</button>
+        <button class="tab-button" data-tab="settings-tab">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>  
+        </button>
+    </section>
+
+    <section id="settings-tab" class="tab-content"">
+        <div class="settings-panel">
+            <h2>Settings</h2>
+            <button id="theme-toggle" class="theme-button">
+                Toggle Dark Mode
+            </button>
+
+            <button onclick="localStorage.removeItem('pp_session'); location.reload();" class="theme-button">
+                Log out
+            </button>
+    </section>
+    
+
+    <section id="dashboard-tab" class="tab-content active">
+        <div class="status-cards">
+            <div class="cards">
+                <div class="card">
+                    <h3>Balance</h3>
+                    <p id="balance">$0.00</p>
+                </div>
+                <div class="card">
+                    <h3>Saved</h3>
+                    <p id="saved">$0.00</p>
+                </div>
+                <div class="card">
+                    <h3>Goal progress</h3>
+                    <p id="goal-progress">0%</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-goals-panel">
+            <h2>Active Goals</h2>
+            <div id="dashboard-goal-list" class="dashboard-goal-list"></div>
+        </div>
+
+        <div class="main-row">
+            <div class="transactions">
+                <h2>Recent Transactions</h2>
+                <ul id="transaction-list"></ul>
+            </div>
+            <div class="insights">
+                <h2>Spending Insights</h2>
+                <ul id="insight-list"></ul>
+            </div>
+        </div>
+
+        <div class="ai-tips">
+            <h2>AI Tips</h2>
+            <p id="ai-advice">Loading...</p>
+        </div>
+    </section>
+
+    <section id="goal-tab" class="tab-content">
+        <div class="goal-panel">
+            <h2>Savings Goals</h2>
+            <p class="goal-intro">Create, update, and track multiple goals directly in the app.</p>
+
+            <div class="goal-manager">
+                <div class="goal-list" id="goal-list"></div>
+
+                <div class="goal-form">
+                    <h3>Add a new goal</h3>
+                    <label>
+                        Goal name
+                        <input id="new-goal-name" type="text" placeholder="Vacation" />
+                    </label>
+                    <label>
+                        Target amount
+                        <input id="new-goal-target" type="number" min="0" value="0" />
+                    </label>
+                    <label>
+                        Saved amount
+                        <input id="new-goal-saved" type="number" min="0" value="0" />
+                    </label>
+                    <button id="add-goal-button" type="button">Add goal</button>
+                </div>
+            </div>
+
+            <div class="goal-summary">
+                <div class="goal-grid">
+                    <div class="goal-card">
+                        <h3>Total target</h3>
+                        <p id="goal-amount">$0.00</p>
+                    </div>
+                    <div class="goal-card">
+                        <h3>Total saved</h3>
+                        <p id="goal-saved">$0.00</p>
+                    </div>
+                    <div class="goal-card">
+                        <h3>Total remaining</h3>
+                        <p id="goal-remaining">$0.00</p>
+                    </div>
+                </div>
+                <div class="goal-status">
+                    <p id="goal-status">Loading goal details...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
