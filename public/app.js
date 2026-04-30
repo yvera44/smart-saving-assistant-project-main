@@ -125,6 +125,7 @@ function removeGoal(goalId) {
     saveGoals();
     renderGoals();
     updateSummaryCards();
+    renderDashboardGoals();
     updateGoalUIState();
 }
 
@@ -217,7 +218,9 @@ function renderDashboardGoals() {
         message.className = 'goal-empty';
         message.textContent = 'No active goals yet. Create one on the Goal tab.';
         dashboardGoalList.appendChild(message);
+
         return;
+    
     }
 
     goals.forEach(goal => {
