@@ -285,12 +285,29 @@ header h1 {
 }
 
 .goal-manager {
+
     display: grid;
     gap: 20px;
     grid-template-columns: 1.5fr 1fr;
 }
 
+.goal-list::-webkit-scrollbar{
+    width: 6px;
+}
+
+.goal-list::-webkit-scrollbar-track{
+    background: var(--border-color);
+    border-radius: 999px;
+}
+
+.goal-list::-webkit-scrollbar-thumb{
+    background: var(--accent-color);
+    border-radius: 999px;
+}
+
 .goal-list {
+    max-height: 600px;
+    overflow-y: auto ;
     display: grid;
     gap: 16px;
 }
@@ -302,6 +319,7 @@ header h1 {
     background: var(--bg-card);
     border-radius: 12px;
     box-shadow: 0 2px 10px var(--shadow);
+    align-self: start;
 }
 
 .goal-form h3 {
@@ -316,6 +334,7 @@ header h1 {
 }
 
 .goal-form input {
+ 
     padding: 10px 12px;
     border: 1px solid var(--border-color);
     border-radius: 10px;

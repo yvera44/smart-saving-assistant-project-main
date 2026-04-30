@@ -125,6 +125,30 @@ function removeGoal(goalId) {
     saveGoals();
     renderGoals();
     updateSummaryCards();
+    updateGoalUIState();
+}
+
+function updateGoalUIState() {
+    const goalLimitMessage = document.getElementById('goal-limit-message');
+    const addGoalButton = document.getElementById('add-goal-button');
+
+    if (goals.length >= 4) {
+        // Disable the button and show the warning
+        if (addGoalButton) {
+            addGoalButton.disabled = true;
+            addGoalButton.style.opacity = "0.5";
+            addGoalButton.style.cursor = "not-allowed";
+        }
+        if (goalLimitMessage) goalLimitMessage.style.display = 'block';
+    } else {
+        // Re-enable everything
+        if (addGoalButton) {
+            addGoalButton.disabled = false;
+            addGoalButton.style.opacity = "1";
+            addGoalButton.style.cursor = "pointer";
+        }
+        if (goalLimitMessage) goalLimitMessage.style.display = 'none';
+    }
 }
 
 function createGoalItem(goal) {
@@ -215,15 +239,23 @@ function renderDashboardGoals() {
 }
 
 addGoalButton.addEventListener('click', () => {
+    if (goals.length >= 4) {
+        return; 
+    }
+
     const name = newGoalNameInput.value.trim() || 'New goal';
     const target = Number(newGoalTargetInput.value) || 0;
     const saved = Number(newGoalSavedInput.value) || 0;
     const id = `goal-${Date.now()}`;
+
     goals.push({ id, name, target, saved });
+
     saveGoals();
     renderGoals();
     renderDashboardGoals();
     updateSummaryCards();
+    updateGoalUIState();
+
     newGoalNameInput.value = '';
     newGoalTargetInput.value = '2000';
     newGoalSavedInput.value = '0';

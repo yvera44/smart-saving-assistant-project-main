@@ -108,8 +108,13 @@
                 <div class="goal-list" id="goal-list"></div>
 
                 <div class="goal-form">
-                    <h3>Add a new goal</h3>
-                    <label>
+                <h3>Add a new goal</h3>
+
+                    <p id="goal-limit-message" style="color: #ff4d4d; display: none; font-size: 0.9rem; margin-bottom: 10px;">
+                        Maximum of 4 goals reached. Delete a goal to add a new one.
+                    </p>
+
+                     <label>
                         Goal name
                         <input id="new-goal-name" type="text" placeholder="Vacation" />
                     </label>
