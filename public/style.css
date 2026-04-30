@@ -187,9 +187,26 @@ header h1 {
     margin-bottom: 20px;
 }
 
+.transactions ul::-webkit-scrollbar,
+.insights ul::-webkit-scrollbar {
+    width: 6px;
+}
+
+.transactions ul::-webkit-scrollbar-track,
+.insights ul::-webkit-scrollbar-track {
+    background: var(--border-color);
+    border-radius: 999px;
+}
+
+.transactions ul::-webkit-scrollbar-thumb,
+.insights ul::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 999px;
+}
+
 .transactions ul,
 .insights ul {
-    max-height: 400px;
+    max-height: 300px;
     overflow-y: auto ;
     margin: 0;
     padding-left: 20px;
