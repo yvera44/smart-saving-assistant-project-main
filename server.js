@@ -40,7 +40,7 @@ app.get('/api/transactions/live', async (req, res) => {
 });
 
 
-// ✅ Save data to Cosmos DB
+// Save data to Cosmos DB
 app.post('/api/save', async (req, res) => {
     try {
         const data = req.body;
@@ -56,7 +56,7 @@ app.post('/api/save', async (req, res) => {
     }
 });
 
-// ✅ Get all data from Cosmos DB
+// Get all data from Cosmos DB
 app.get('/api/data', async (req, res) => {
     try {
         const { resources } = await container.items
@@ -72,3 +72,4 @@ const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
