@@ -1,7 +1,8 @@
-require('dotenv').config();
-const { container } = require("./db");
-const express = require('express');
-const axios = require('axios');
+import 'dotenv/config';
+import { container } from './db.js';
+import express from 'express';
+import axios from 'axios';
+import { ChatGoogleGenerativeAI } from '@langchain/google-genai';
 const app = express();
 
 app.use(express.json());
@@ -63,6 +64,26 @@ app.get('/api/data', async (req, res) => {
             .query("SELECT * FROM c")
             .fetchAll();
         res.json(resources);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+const chatModel = new ChatGoogleGenerativeAI({
+    apiKey: process.env.GOOGLE_API_KEY,
+    model: "gemini-2.5-flash",
+    maxRetries: 2,
+});
+
+app.post('/api/chat', async (req, res) => {
+    try {
+        const { message } = req.body;
+        const response = await chatModel.invoke(
+            `You are a helpful personal finance assistant for a savings app. 
+             Keep responses concise and focused on budgeting, saving, and spending advice.
+             User message: ${message}`
+        );
+        res.json({ reply: response.content });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

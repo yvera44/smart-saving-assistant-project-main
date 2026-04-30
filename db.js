@@ -1,5 +1,5 @@
-const { CosmosClient } = require("@azure/cosmos");
-require("dotenv").config();
+import { CosmosClient } from '@azure/cosmos';
+import 'dotenv/config';
 
 const client = new CosmosClient({
   endpoint: process.env.COSMOS_ENDPOINT,
@@ -9,4 +9,4 @@ const client = new CosmosClient({
 const database = client.database(process.env.COSMOS_DATABASE);
 const container = database.container(process.env.COSMOS_CONTAINER);
 
-module.exports = { client, database, container };
+export { client, database, container };

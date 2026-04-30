@@ -1,13 +1,13 @@
 /* Default Light Mode */
 :root {
-    --bg-page: #f5f5f5;
-    --bg-card: #ffffff;
+    --bg-page: hsla(206, 20%, 80%, 0.936);
+    --bg-card: #d4dbe4f6;
     --bg-header: #003087;
     --text-main: #1a1a1a;
     --text-secondary: #555;
     --accent-color: #003087;
-    --border-color: #d1d9e6;
-    --bg-accent: #f1f5ff;
+    --border-color: #acbcd2b1;
+    --bg-accent: #b2c0d4cf;
     --shadow: rgba(0, 0, 0, 0.06);
 }
 

@@ -368,3 +368,57 @@ themeToggle.addEventListener('click', () => {
 
     themeToggle.textContent = newTheme === 'light' ? 'Toggle Dark Mode' : 'Toggle Light Mode';
 });
+
+const chatToggle = document.getElementById('chat-toggle');
+const chatBox = document.getElementById('chat-box');
+const chatInput = document.getElementById('chat-input');
+const chatSend = document.getElementById('chat-send');
+const chatMessages = document.getElementById('chat-messages');
+
+chatToggle.addEventListener('click', () => {
+    chatBox.style.display = chatBox.style.display === 'none' ? 'block' : 'none';
+});
+
+function appendMessage(text, role) {
+    const msg = document.createElement('div');
+    msg.textContent = text;
+    msg.style.cssText = `
+        padding: 10px 14px;
+        border-radius: 12px;
+        max-width: 85%;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        align-self: ${role === 'user' ? 'flex-end' : 'flex-start'};
+        background: ${role === 'user' ? 'var(--bg-header)' : 'var(--border-color)'};
+        color: ${role === 'user' ? 'var(--bg-card)' : 'var(--text-main)'};
+    `;
+    chatMessages.appendChild(msg);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+async function sendMessage() {
+    const message = chatInput.value.trim();
+    if (!message) return;
+
+    appendMessage(message, 'user');
+    chatInput.value = '';
+
+    appendMessage('Thinking...', 'bot');
+
+    try {
+        const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
+        });
+        const data = await response.json();
+        chatMessages.lastChild.remove();
+        appendMessage(data.reply, 'bot');
+    } catch {
+        chatMessages.lastChild.remove();
+        appendMessage('Sorry, something went wrong.', 'bot');
+    }
+}
+
+chatSend.addEventListener('click', sendMessage);
+chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
