@@ -189,6 +189,8 @@ header h1 {
 
 .transactions ul,
 .insights ul {
+    max-height: 400px;
+    overflow-y: auto ;
     margin: 0;
     padding-left: 20px;
 }
