@@ -78,11 +78,26 @@ const chatModel = new ChatGoogleGenerativeAI({
 app.post('/api/chat', async (req, res) => {
     try {
         const { message } = req.body;
+
+        const { resources } = await container.items
+            .query("SELECT * FROM c WHERE c.type = 'transaction' ORDER BY c._ts DESC")
+            .fetchAll();
+
+        const transactionSummary = resources.map(t =>
+            `${t.date} - ${t.name}: $${t.amount} (${t.category})`
+        ).join('\n');
+
         const response = await chatModel.invoke(
-            `You are a helpful personal finance assistant for a savings app. 
+            `You are a helpful personal finance assistant for a savings app.
              Keep responses concise and focused on budgeting, saving, and spending advice.
+             
+             Here is the user's real transaction history:
+             ${transactionSummary}
+             
+             Use this data to give personalized advice when relevant.
              User message: ${message}`
         );
+        
         res.json({ reply: response.content });
     } catch (error) {
         res.status(500).json({ error: error.message });
