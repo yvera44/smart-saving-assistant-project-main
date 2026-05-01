@@ -45,9 +45,9 @@ async function importData() {
       ...transaction,
       createdAt: new Date()
     });
-    console.log(`✅ Imported: ${transaction.name}`);
+    console.log(`Imported: ${transaction.name}`);
   }
-  console.log("🎉 All done!");
+  console.log("All done!");
 }
 
 importData();

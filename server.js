@@ -8,7 +8,6 @@ const app = express();
 app.use(express.json());
 app.use(express.static('public'));
 
-// НОВИЙ - читає з Cosmos DB
 app.get('/api/transactions', async (req, res) => {
     try {
         const { resources } = await container.items
@@ -20,7 +19,6 @@ app.get('/api/transactions', async (req, res) => {
     }
 });
 
-// РЕАЛЬНИЙ ЧАС
 app.get('/api/transactions/live', async (req, res) => {
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
