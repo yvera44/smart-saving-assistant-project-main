@@ -184,11 +184,23 @@ function createGoalItem(goal) {
     });
 
     targetInput.addEventListener('input', event => {
-        updateGoal(goal.id, { target: Number(event.target.value) || 0 });
+        let val = Number(event.target.value);
+        if (!isFinite(val) || isNaN(val)) val = 0;
+        if (val < 0) {
+            val = 0;
+            event.target.value = '0';
+        }
+        updateGoal(goal.id, { target: val });
     });
 
     savedInput.addEventListener('input', event => {
-        updateGoal(goal.id, { saved: Number(event.target.value) || 0 });
+        let val = Number(event.target.value);
+        if (!isFinite(val) || isNaN(val)) val = 0;
+        if (val < 0) {
+            val = 0;
+            event.target.value = '0';
+        }
+        updateGoal(goal.id, { saved: val });
     });
 
     deleteButton.addEventListener('click', () => {
@@ -247,8 +259,13 @@ addGoalButton.addEventListener('click', () => {
     }
 
     const name = newGoalNameInput.value.trim() || 'New goal';
-    const target = Number(newGoalTargetInput.value) || 0;
-    const saved = Number(newGoalSavedInput.value) || 0;
+    let target = Number(newGoalTargetInput.value);
+    if (!isFinite(target) || isNaN(target)) target = 0;
+    if (target < 0) { target = 0; newGoalTargetInput.value = '0'; }
+
+    let saved = Number(newGoalSavedInput.value);
+    if (!isFinite(saved) || isNaN(saved)) saved = 0;
+    if (saved < 0) { saved = 0; newGoalSavedInput.value = '0'; }
     const id = `goal-${Date.now()}`;
 
     goals.push({ id, name, target, saved });

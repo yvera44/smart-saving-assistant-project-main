@@ -24,7 +24,7 @@ It helps users track spending, manage savings goals, and receive AI-powered fina
 - 💳 **Transaction Tracking** — Real transactions stored in Azure Cosmos DB  
 - 🗂️ **Categories** — Food, Entertainment, Shopping, Transport, Health  
 - 🎯 **Savings Goals** — Create and track multiple goals  
-- 🤖 **AI Tips** — Personalized spending advice powered by Anthropic Claude  
+- 🤖 **AI Chat** - Financial advice bot powered by Gemini 2.5  
 - 🌙 **Dark Mode** — Toggle between light and dark themes  
 
 ---
@@ -37,6 +37,7 @@ It helps users track spending, manage savings goals, and receive AI-powered fina
 | Azure Cosmos DB      | Cloud database       |
 | JavaScript           | Frontend logic       |
 | HTML + CSS           | User interface       |
+| Gemini 2.5.           | API
 
 ---
 
