@@ -1,7 +1,7 @@
 /* Default Light Mode */
 :root {
-    --bg-page: hsla(206, 20%, 80%, 0.936);
-    --bg-card: #d4dbe4f6;
+    --bg-page: hsl(207, 20%, 80%);
+    --bg-card: #d4dbe4;
     --bg-header: #003087;
     --text-main: #1a1a1a;
     --text-secondary: #555;
@@ -51,7 +51,7 @@
     width: 100%;
     padding: 10px;
     background-color: #007bff;
-    color: #fff;
+    color: var(--bg-card);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -401,7 +401,7 @@ header h1 {
 
 .goal-input-row label {
     font-size: 0.9rem;
-    color: #ffffff;
+    color: var(--text-secondary);
     margin-bottom: 4px; 
 }
 
