@@ -275,12 +275,15 @@ function categorize(name) {
 }
 
 function categoryLabel(key) {
-    return key === 'coffee' ? 'Coffee & Snacks'
-        : key === 'streaming' ? 'Streaming'
-        : key === 'retail' ? 'Retail'
-        : key === 'food' ? 'Dining'
-        : key === 'transportation' ? 'Transportation'
-        : 'Other';
+    const labels = {
+        food: 'Food',
+        entertainment: 'Entertainment',
+        shopping: 'Shopping',
+        transportation: 'Transportation',
+        health: 'Health',
+        other: 'Other'
+    };
+    return labels[key.toLowerCase()] || key;
 }
 
 fetch('/api/transactions')
@@ -290,7 +293,7 @@ fetch('/api/transactions')
         let totalSpent = 0;
 
         transactions.forEach(transaction => {
-            const category = categorize(transaction.name);
+            const category = (transaction.category || 'Other').toLowerCase();
             totals[category] = (totals[category] || 0) + transaction.amount;
             totalSpent += transaction.amount;
 
